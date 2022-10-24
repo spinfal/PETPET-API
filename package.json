@@ -1,40 +1,27 @@
 {
-    "name": "PETPET-API",
-    "version": "1.0.0",
-    "description": "rest api website",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "test": "start"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+ssh://git@github.com/balhisyhrl/PETPET-API.git"
-    },
-    "author": "Balhisyhrl",
-    "license": "GNU",
-    "bugs": {
-        "url": "https://github.com/balhisyhrl/"
-    },
-    "homepage": "https://github.com/balhisyhrl/",
-    "dependencies": {
-        "chalk": "^4.1.0",
-        "cheerio": "^1.0.0-rc.5",
-        "cors": "^2.8.5",
-        "express": "^4.17.1",
-        "fs": "0.0.1-security",
-        "lodash": "^4.17.20",
-        "monk": "^7.3.3",
-        "morgan": "^1.10.0",
-        "needle": "^2.6.0",
-        "node-fetch": "^2.6.1",
-        "pet-pet-gif": "^1.0.9",
-        "request": "^2.88.2",
-        "scrape-yt": "^1.4.8",
-        "ssl-express-www": "^3.0.7",
-        "urlencode": "^1.1.0"
-    },
-    "devDependencies": {
-        "nodemon": "^2.0.19"
-    }
+  "name": "petpet-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spinfal/PETPET-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spinfal/PETPET-API/issues"
+  },
+  "homepage": "https://github.com/spinfal/PETPET-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "node": "^16.10.0",
+    "pet-pet-gif": "^1.0.9",
+    "ssl-express-www": "^3.0.10"
+  }
 }
