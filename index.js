@@ -77,42 +77,6 @@ app.get('/file/:file', (req, res) => {
   }
 });
 
-app.use('/', async (req, res, next) => {
-  if (req.params.file) {
-    const petpet = req.params.file;
-    if (!petpet) return res.json({
-      status: false,
-      creator: `Balhisyhrl`,
-      github: `https://github.com/balhisyhrl`,
-      msg: "Cannot GET FILE"
-    });
-    try {
-      let filename = petpet;
-      fs.readFile(__dirname + `/tmp/${ filename }`, function (err, data) {
-        res.writeHead(200, {'content-type': 'image/gif'});
-        res.end(data);
-      });
-    } catch (e) {
-      //console.log(e)
-      res.json({
-        status: false,
-        creator: `Balhisyhrl`,
-        github: `https://github.com/balhisyhrl`,
-        msg: "Cannot GET FILE"
-      });
-    }
-  } else {
-    res.json({
-      status: false,
-      creator: `Balhisyhrl`,
-      github: `https://github.com/balhisyhrl`,
-      msg: "Cannot GET parameter url or File",
-      example_petpet: "https://PETPET-API.clit.repl.co/petpet?url=https://upload.wikimedia.org/wikipedia/en/3/3d/480px-Gawr_Gura_-_Portrait_01.png",
-      example_get_petpet: "https://PETPET-API.clit.repl.co/?file=PETPET-165795955795822.gif"
-    });
-  }
-});
-
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
 });
