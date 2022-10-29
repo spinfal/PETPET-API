@@ -31,14 +31,24 @@ const allowedTypes = [
 app.get("/", (req, res) => {
   res.json({
     ..._DEFAULTS,
-    msg: "Cannot GET query url or parameter file",
+    msg: "Cannot GET url query",
     example_petpet: "https://PETPET-API.clit.repl.co/petpet?url=https://upload.wikimedia.org/wikipedia/en/3/3d/480px-Gawr_Gura_-_Portrait_01.png",
-    example_get_petpet: "https://femboy.productions/petpet/txifokss.gif"
+    example_get_petpet: "https://s3.us-east-1.wasabisys.com/e-zimagehosting/ff6c0246-6f99-4a98-b2f0-d30e5e27ebc0/txifokss.gif"
   });
 });
 
 app.get("/petpet", async (req, res) => {
   const petpet = req.query.url;
+  const version = req.query.version;
+
+  const getRes = (response) => {
+    switch (version) {
+      case "v2":
+        return `https://s3.us-east-1.wasabisys.com/e-zimagehosting/ff6c0246-6f99-4a98-b2f0-d30e5e27ebc0/${response?.imageUrl.split('/').pop()}`;
+      default:
+        return response?.imageUrl
+    }
+  }
 
   if (allowedTypes.indexOf(petpet.match(/\.\w+/g)?.pop().toLowerCase()) == -1) return res.json({
     ..._DEFAULTS,
@@ -60,7 +70,7 @@ app.get("/petpet", async (req, res) => {
       backgroundColor: null, // Other values could be the string "rgba(123, 233, 0, 0.5)". Defaults to null - i.e. transparent.
     });
 
-    const filename = `PETPET-${ Math.floor(Math.random() * req.headers["x-target"].length ?? null) }.gif`;
+    const filename = `PETPET-${ Math.floor(Math.random() * petpet) }.gif`;
 
     const form = new FormData();
     const path = `./tmp/${ filename }`;
@@ -85,7 +95,7 @@ app.get("/petpet", async (req, res) => {
           res.json({
             ..._DEFAULTS,
             status: true,
-            result: response?.imageUrl
+            result: getRes(response)
           });
         } else {
           console.log("[ e-z.host upload err ]", response);
